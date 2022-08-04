@@ -10,8 +10,13 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     List<User> queryUserList();
-    User queryUserById(int id);
+
+    //用用户Id查询用户信息
+    User searchUserById(int userId);
+
     int addUser(User user);
-    int update(User user);
-    int deleteUser(int id);
+
+    int updateUser(User user);
+
+    int deleteUser(int userId);
 }
