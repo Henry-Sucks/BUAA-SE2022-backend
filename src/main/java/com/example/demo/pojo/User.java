@@ -8,7 +8,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    int cid;
-    String cname;
-    String level;
+    private int userId;
+    private String userName;
+    private String userEmail;
+    private int userPhoneNumber;
+    private String userPassWord;
+    private String userIcon;
+    private String userRealName;
+    private String userCareer;
+    private String userUnit;
+    private String userBirthday;
+    private String userLocation;
+    private String userUrl;
+
+    public User(String name, String Email, String passWord){
+        this.userName = name;
+        this.userEmail = Email;
+        this.userPassWord = passWord;
+    }
+
 }
+
+

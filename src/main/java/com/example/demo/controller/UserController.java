@@ -15,6 +15,7 @@ public class UserController {
 
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
+        userMapper.deleteUser(1);
         List<User> userList = userMapper.queryUserList();
         for (User user : userList){
             System.out.println(user);
