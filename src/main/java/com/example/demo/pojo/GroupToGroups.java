@@ -7,13 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Group {
+public class GroupToGroups {
+    private int groupsId;
     private int groupId;
-    private String groupName;
-    private String groupInf;
-    private String groupIcon;
-
-    public Group(String name){
-        this.groupName = name;
-    }
 }

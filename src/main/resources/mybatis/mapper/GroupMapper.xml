@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.GroupMapper">
+
+    <select id="queryGroupList" resultType="Group">
+        select * from usergroup
+    </select>
+
+    <select id="searchGroupById" resultType="Group">
+        select * from usergroup where groupId = #{groupid}
+    </select>
+
+    <insert id="addGroup" parameterType="Group">
+        insert into usergroup (groupName, groupInf, groupIcon)
+        values(#{groupName}, #{groupInf}, #{groupIcon})
+    </insert>
+
+    <update id="updateGroup" parameterType="Group">
+        update usergroup set groupName = #{groupName}, groupInf = #{groupInf},
+        groupIcon = #{groupIcon}
+    </update>
+
+    <delete id="deleteGroup" parameterType="int">
+        delete from usergroup where groupId = #{groupId}
+    </delete>
+</mapper>

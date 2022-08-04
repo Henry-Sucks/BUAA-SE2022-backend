@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserGroupMapper">
+    <select id="queryUserToGroupList" resultType="UserToGroup">
+        select * from usertogroup
+
+    </select>
+
+    <select id="searchGroupIdByUserId" resultType="userToGroup">
+        select * from usertogroup
+        where userId = #{userId}
+    </select>
+
+    <select id="searchUserIdByGroupId" resultType="userToGroup">
+        select * from usertogroup
+        where groupId = #{groupId}
+    </select>
+
+    <select id="searchUserJobById" resultType="String">
+        select userJob from usertogroup
+        where userId = #{arg0} and groupId = #{arg1}
+    </select>
+
+    <insert id="addUserToGroup" parameterType="UserToGroup">
+        insert into usertogroup(userId, groupId, userJob)
+        values(#{userId}, #{groupId}, #{userJob})
+    </insert>
+
+    <delete id="deleteUserToGroup" parameterType="UserToGroup">
+        delete from usertogroup
+        where userId = #{userId} and groupId = #{groupId}
+    </delete>
+
+    <update id="updateUserToGroup" parameterType="UserToGroup">
+        update usertogroup
+        set userJob = #{userJob}
+        where userId = #{userId} and groupId = #{groupId}
+    </update>
+
+
+</mapper>
