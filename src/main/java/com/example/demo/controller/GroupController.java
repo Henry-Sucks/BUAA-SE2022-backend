@@ -51,4 +51,5 @@ public class GroupController {
     public void  updateMember(int userId, int groupId, String job){
         UserToGroup temUserGroup = new UserToGroup(userId, groupId, job);
         userGroupMapper.updateUserToGroup(temUserGroup);
+    }
 }
