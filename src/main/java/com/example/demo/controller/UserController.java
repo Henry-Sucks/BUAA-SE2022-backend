@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 public class UserController {
@@ -85,7 +87,17 @@ public class UserController {
     public int register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
         userMapper.addUser(temUser);
-        return userMapper.searchUserByEmail(Email).getUserId();
+        return temUser.getUserId();
+    }
+
+    //检查用户邮箱格式
+    public boolean checkEmail(String userEmail){
+
+        String RULE_EMAIL = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
+        Pattern p = Pattern.compile(RULE_EMAIL);
+        Matcher m = p.matcher(userEmail);
+        return m.matches();
+
     }
 
 }

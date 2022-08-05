@@ -12,6 +12,8 @@ public interface GroupMapper {
 
     List<Group> queryGroupList();
 
+    List<Group> searchGroupByName(String name);
+
     Group searchGroupById(int groupId);
 
     int addGroup(Group group);
