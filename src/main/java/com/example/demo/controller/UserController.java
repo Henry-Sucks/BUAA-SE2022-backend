@@ -3,21 +3,19 @@ package com.example.demo.controller;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserMapper userMapper;
 
     //查询所有的user
-    @GetMapping("/queryUserList")
+    @GetMapping
     public List<User> queryUserList(){
-        int a = register("wanguangxi","123456789@qq.com", "11111" );
-        System.out.println(a);
         List<User> userList = userMapper.queryUserList();
         for (User user : userList){
             System.out.println(user);
@@ -54,6 +52,8 @@ public class UserController {
     }
 
     //通过Id查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
+    //查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
+    @PostMapping("/find")
     public User getUserInfById(int userId){
         return userMapper.searchUserById(userId);
     }
@@ -69,6 +69,7 @@ public class UserController {
     }
 
     //更新用户信息
+    @PostMapping("/update")
     public void updateInf(int userId, String userName, String userEmail, int userPhoneNumber,
                 String userPassWord, String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
@@ -82,6 +83,7 @@ public class UserController {
     }
 
     //添加用户 返回用户的id
+    @PostMapping
     public int register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
         userMapper.addUser(temUser);
