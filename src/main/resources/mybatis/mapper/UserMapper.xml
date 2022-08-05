@@ -21,7 +21,7 @@
 
     <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
         insert into userinf (userName, userEmail, userPassword)
-        values(#{userName}, #{userEmail}, #{userPassWord})
+        values(#{userName}, #{userEmail}, #{userPassWord});
     </insert>
 
     <update id="updateUser" parameterType="User">

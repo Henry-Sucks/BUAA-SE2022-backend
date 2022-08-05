@@ -16,8 +16,8 @@ public class UserController {
     //查询所有的user
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
-        userMapper.addUser(new User("wanguangxi", "123456@qq.com", "123456"));
-        userMapper.addUser(new User("huangzhihong", "1234567@qq.com", "1234567"));
+        int a = register("wanguangxi","123456789@qq.com", "11111" );
+        System.out.println(a);
         List<User> userList = userMapper.queryUserList();
         for (User user : userList){
             System.out.println(user);
@@ -84,7 +84,8 @@ public class UserController {
     //添加用户 返回用户的id
     public int register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
-        return userMapper.addUser(temUser);
+        userMapper.addUser(temUser);
+        return userMapper.searchUserByEmail(Email).getUserId();
     }
 
 }
