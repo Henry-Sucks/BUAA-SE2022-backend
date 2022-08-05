@@ -1,13 +1,20 @@
 <template>
-  <el-form label-width="120px" jusitfy="center">
-    <el-form-item label="头像">
-      <img :src="info.avatar">
-    </el-form-item>
-    <el-form-item label="用户名">
-      <el-input style = "width:85px" v-model="info.fakeName" />
-    </el-form-item>
-    <el-form-item style = "width:85px" label="加入时间"/>
-      <el-input style = "width:85px" v-model="info.joinDate" />
+    <el-row>
+    <el-col :span="4">
+        <img :src="info.avatar">
+    </el-col>
+    <div class="topper">
+    <el-col :span="4" >
+    <el-row>
+        <span class="fakeName">{{info.fakeName}}</span>
+    </el-row>
+    <el-row>
+        <span class="joinDate">加入时间:  {{info.joinDate}}</span>
+    </el-row>
+    </el-col>
+    </div>
+    </el-row>
+    <el-form label-width="120px" jusitfy="center" class="form" :disabled="isSelf">
     <el-form-item label="姓名">
       <el-input style = "width:85px" v-model="info.realName" />
     </el-form-item>
@@ -48,15 +55,24 @@ export default{
     return{
       info: {
         avatar: userDefault,
-        fakeName: '',
+        fakeName: 'Henry',
         realName: '',
         job: '',
         corp: '',
         region: '',
         birthday: 0,
-        joinDate: 0,
+        joinDate: '2027/08/09',
         website: '',
         quote: ''
+      },
+
+      props:['uid'],
+
+      computed:{
+        // 跟目前登陆对比
+        isSelf(){
+          return true;
+        }
       }
     }
   }
@@ -64,5 +80,33 @@ export default{
 </script>
 
 <style scoped>
+img{
+  border-radius:50%;
+  width: 200px;
+  height: 200px;
+}
+
+.fakeName{
+  font-weight: 700;
+  font-size: 45px;
+  margin-top: 80px;
+  margin-left: 0px;
+}
+
+.joinDate{
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 0px;
+}
+
+.form{
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.topper{
+  margin-left: 10px;
+}
 
 </style>

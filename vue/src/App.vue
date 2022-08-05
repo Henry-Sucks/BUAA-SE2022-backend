@@ -1,11 +1,9 @@
 <template>
   <el-container>
-    <el-header>
+    <el-header class="header">
     <header-nav></header-nav>
     </el-header>
-    <el-main>
-    <router-view></router-view>
-    </el-main>
+    <router-view class="mainer"></router-view>
   </el-container>
 </template>
 
@@ -49,7 +47,7 @@ export default {
 }
 
 .header-nav {
-  margin-top: 0;
-  padding-top: 0;
+  margin: 0;
+  padding: 0;
 }
 </style>

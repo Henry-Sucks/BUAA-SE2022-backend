@@ -27,7 +27,7 @@ export default {
 
     data() {
         return {
-            teamAvatar: 'https://us.123rf.com/450wm/kaisorn/kaisorn1507/kaisorn150700059/43462346-office-workplace-flat-design.jpg',
+            teamAvatar: this.team.avatar,
         }
     },
 

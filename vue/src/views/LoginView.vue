@@ -18,8 +18,8 @@
       <el-col :span="6">
         <div class="login-block">
         <el-row>
-          <span class="login-text">用户名</span>
-          <el-input v-model='info.userName' clearable></el-input>
+          <span class="login-text">邮箱</span>
+          <el-input v-model='info.email' clearable></el-input>
         </el-row>
         <el-row>
           <span class="login-text">密码</span>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {Lock} from '@element-plus/icons-vue'
 const pic1 = require('../assets/test1.jpg')
 const pic2 = require('../assets/test2.jpg')
@@ -53,7 +54,7 @@ export default {
   data() {
     return {
       info: {
-        userName : '',
+        email : '',
         password : '',
       },
       
@@ -78,11 +79,24 @@ export default {
 
   methods: {
     handleLogin(){
-        let res = this.$store.dispatch('loginOptions/getUserInfByEmail')
-        if(res === 0)
-          this.$store.commit('loginOptions/setLoggedIn')
-        else
-          alert('不存在该用户')
+        axios({
+            method: 'GET',
+            url: 'http://localhost:9090/user/login',
+            params: {
+              userEmail: this.info.email,
+              passWord: this.info.password
+            }
+          }).then(response => {
+            let res = response.data
+            console.log(res.data)
+            if(res === 1)
+              this.$store.commit('loginOptions/setLoggedIn')
+            else if(res === 0)
+              alert('密码输入错误')
+            else if(res === -1)
+              alert('不存在该用户')
+              })
+        
     },
 
     register(){

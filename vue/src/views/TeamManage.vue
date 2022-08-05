@@ -1,7 +1,6 @@
 <template>
     <el-container>
       <el-header>
-        <el-page-header class="page-header"  :icon="ArrowLeft" content="管理所有团队" title="返回"  />
         <el-row>
           <el-col :span="7"></el-col>
           <el-col :span="8">
@@ -20,7 +19,7 @@
             :key="data.id" 
             :data="data"
             :span="4">
-            <team-card class="page-item"  :team="data"></team-card>
+            <team-card class="page-item" @click="enterTeam(data.tid)"  :team="data"></team-card>
             </el-col>
         </el-row>
       </el-main>
@@ -35,8 +34,6 @@
                 :total="filteredData.length"
                 :page-size="perPage"
                 v-model:current-page="curPage"
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
               />
           </div>
         </el-row>
@@ -55,7 +52,8 @@ export default {
     data(){
       return{
           datas:[
-            {name:'1'},{name:'2'},{name:'3'},{name:'4'},{name:'5'},
+            {tid: -1, name:'新建团队', role:-1, avatar:'https://cdn-icons.flaticon.com/png/512/3018/premium/3018447.png?token=exp=1659691511~hmac=d23404e2e5b8e5d4896cfa2e241e730b'},
+            {tid: 1, name:'1', role:0, avatar:'https://us.123rf.com/450wm/kaisorn/kaisorn1507/kaisorn150700059/43462346-office-workplace-flat-design.jpg'},{name:'2', role:1},{name:'3', role:2},{name:'1', role:0},{name:'2', role:1},{name:'3', role:2},{name:'1', role:0},{name:'2', role:1},{name:'3', role:2},{name:'1', role:0},{name:'2', role:1},{name:'3', role:2},{name:'1', role:0},{name:'2', role:1},{name:'3', role:2},{name:'1', role:0},{name:'2', role:1},{name:'3', role:2},
           ],
 
           // 分页功能
@@ -93,7 +91,17 @@ export default {
         else
           return this.datas
       }
-      
+    },
+
+    methods:{
+      enterTeam(tid){
+        this.$router.push({
+            name: 'TeamPage',
+            params: {
+                tid: tid
+            }
+        })
+      }
     }
 }
 </script>

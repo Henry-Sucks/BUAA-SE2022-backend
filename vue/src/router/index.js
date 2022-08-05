@@ -5,6 +5,7 @@ import HomePage from '@/views/HomePage'
 import UserInfo from '@/views/UserInfo'
 import LoginView from '@/views/LoginView'
 import RegisterView from '@/views/RegisterView'
+import TeamPage from '@/views/TeamPage'
 const routes = [
     {
         path: '/',
@@ -39,6 +40,12 @@ const routes = [
                 path: 'info/:uid',
                 name: 'UserInfo',
                 component: UserInfo
+            },
+
+            {
+                path: 'teaminfo/:tid',
+                name: 'TeamPage',
+                component: TeamPage
             },
 
         ]

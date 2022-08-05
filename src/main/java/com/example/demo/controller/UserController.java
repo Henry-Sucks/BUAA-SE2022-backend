@@ -38,12 +38,15 @@ public class UserController {
     }
 
     //邮箱登录
+    @GetMapping("/login")
     public int checkLoginByEmail(String userEmail, String passWord){
         User temUser = userMapper.searchUserByEmail(userEmail);
         if (temUser == null){
             return -1;
         }
         String psw = temUser.getUserPassWord();
+        System.out.println(psw);
+        System.out.println(passWord);
         if (psw.equals(passWord)){
             return 1;
         }else{
@@ -53,17 +56,18 @@ public class UserController {
 
     //通过Id查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
     //查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
-    @PostMapping("/find")
     public User getUserInfById(int userId){
         return userMapper.searchUserById(userId);
     }
 
     //通过Email查找用户
+    @GetMapping("/findEmail")
     public User getUserInfByEmail(String userEmail){
         return userMapper.searchUserByEmail(userEmail);
     }
 
     //通过Name查找用户
+    @GetMapping("/findName")
     public List<User> getUserInfByName(String userName){
         return userMapper.searchUserByName(userName);
     }

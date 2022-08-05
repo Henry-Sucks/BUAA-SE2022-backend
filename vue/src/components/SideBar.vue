@@ -31,7 +31,6 @@
 <el-menu-item></el-menu-item>
 <el-menu-item></el-menu-item>
 <el-menu-item></el-menu-item>
-<el-menu-item></el-menu-item>
 <el-sub-menu index="2">
     <template #title>
         <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="user" style="width: 30px;"></el-image>
@@ -78,8 +77,12 @@ export default {
         })
         },
         userSelected(){
+            console.log("调用成功")
             this.$router.push({
-          name:'UserInfo'
+            name:'UserInfo',
+            params:{
+                uid: 1
+            }
         })
         },
     },
