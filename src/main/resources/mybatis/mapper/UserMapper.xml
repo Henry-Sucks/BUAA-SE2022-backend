@@ -7,11 +7,19 @@
         select * from userinf
     </select>
 
-    <select id="searchUserById" resultType="User">
-        select * from userinf where userId = #{id}
+    <select id="searchUserByName" resultType="User">
+        select * from userinf where userName = #{userName}
     </select>
 
-    <insert id="addUser" parameterType="User">
+    <select id="searchUserById" resultType="User">
+        select * from userinf where userId = #{userId}
+    </select>
+
+    <select id="searchUserByEmail" resultType="User">
+        select * from userinf where userEmail = #{userEmail}
+    </select>
+
+    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
         insert into userinf (userName, userEmail, userPassword)
         values(#{userName}, #{userEmail}, #{userPassWord})
     </insert>

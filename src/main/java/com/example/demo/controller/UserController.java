@@ -25,8 +25,8 @@ public class UserController {
         return userList;
     }
 
-    //检查登录 返回-1表示用户不存在，返回0表示密码错误，返回1表示密码正确
-    public int checkLogin(int userId, String passWord){
+    //用户名登录：检查登录 返回-1表示用户不存在，返回0表示密码错误，返回1表示密码正确
+    public int checkLoginById(int userId, String passWord){
         User temUser = userMapper.searchUserById(userId);
         if (temUser == null){
             return -1;
@@ -39,9 +39,33 @@ public class UserController {
         }
     }
 
-    //查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
+    //邮箱登录
+    public int checkLoginByEmail(String userEmail, String passWord){
+        User temUser = userMapper.searchUserByEmail(userEmail);
+        if (temUser == null){
+            return -1;
+        }
+        String psw = temUser.getUserPassWord();
+        if (psw.equals(passWord)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    //通过Id查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
     public User getUserInfById(int userId){
         return userMapper.searchUserById(userId);
+    }
+
+    //通过Email查找用户
+    public User getUserInfByEmail(String userEmail){
+        return userMapper.searchUserByEmail(userEmail);
+    }
+
+    //通过Name查找用户
+    public List<User> getUserInfByName(String userName){
+        return userMapper.searchUserByName(userName);
     }
 
     //更新用户信息
@@ -61,7 +85,6 @@ public class UserController {
     public int register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
         return userMapper.addUser(temUser);
-
     }
 
 }

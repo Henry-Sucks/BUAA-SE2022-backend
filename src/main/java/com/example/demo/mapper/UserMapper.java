@@ -11,8 +11,12 @@ import java.util.List;
 public interface UserMapper {
     List<User> queryUserList();
 
+    List<User> searchUserByName(String userName);
+
     //用用户Id查询用户信息
     User searchUserById(int userId);
+
+    User searchUserByEmail(String userEmail);
 
     int addUser(User user);
 
