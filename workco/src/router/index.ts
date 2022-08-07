@@ -6,6 +6,8 @@ import UserInfo from '@/views/UserInfo.vue'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import TeamPage from '@/views/team/TeamPage.vue'
+import ProjectPage from '@/views/projects/ProjectPage.vue'
+
 const routes = [
     {
         path: '/',
@@ -43,9 +45,15 @@ const routes = [
             },
 
             {
-                path: 'teaminfo/:tid',
+                path: 'team/:tid',
                 name: 'TeamPage',
                 component: TeamPage
+            },
+
+            {
+                path: 'project/:pid',
+                name: 'ProjectPage',
+                component: ProjectPage
             },
 
         ]

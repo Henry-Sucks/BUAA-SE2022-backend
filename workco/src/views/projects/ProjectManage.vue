@@ -6,11 +6,11 @@
           <el-button 
             color="#1F80B0" class="input new-button" round
           >
-            新建团队
+            新建项目
           </el-button>
           </el-col>
           <el-col :span="8">
-            <el-input v-model="searchInput" class="input" placeholder="通过队名搜索团队">
+            <el-input v-model="searchInput" class="input" placeholder="通过项目名搜索项目">
                 <template #prefix>
                   <el-icon><search /></el-icon>
                 </template>
@@ -22,10 +22,10 @@
         <el-row class="main">
             <el-col 
             v-for="data in paginatedData"
-            :key="data.tid" 
+            :key="data.pid" 
             :data="data"
             :span="4">
-            <team-card class="page-item" @click="enterTeam(data.tid)"  :team="data"></team-card>
+            <team-card class="page-item" @click="enterProject(data.pid)"  :team="data"></team-card>
             </el-col>
         </el-row>
       </el-main>
@@ -53,7 +53,7 @@ import {useRouter} from 'vue-router'
 
 // 所有数据
 const datas = [
-            {tid: 1, name:'1', role: 0},{tid: 2, name:'1', role: 1}
+            {pid: 1, name:'1'},{pid: 2, name:'1'}
           ]
 
 // 分页功能
@@ -92,14 +92,19 @@ let filteredData = computed(() => {
 })
 
 const router = useRouter()
-function enterTeam(tid: number){
+function enterProject(pid: number){
     router.push({
-            name: 'TeamPage',
+            name: 'ProjectPage',
             params: {
-                tid: tid
+                pid: pid
             }
         })
 }
+
+// 分页
+
+
+
 </script>
 
 <style scoped>

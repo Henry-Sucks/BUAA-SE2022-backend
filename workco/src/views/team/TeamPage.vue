@@ -9,13 +9,16 @@
             <el-tab-pane label="团队成员" name="first">
                 <member-table></member-table>
             </el-tab-pane>
-            <el-tab-pane label="团队项目" name="second"></el-tab-pane>
+            <el-tab-pane label="团队项目" name="second">
+                <project-manage></project-manage>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
 <script lang="ts" setup>
 import TeamHeader from '../../components/teams/TeamHeader.vue'
 import MemberTable from '../../components/teams/MemberTable.vue'
+import ProjectManage from '../projects/ProjectManage.vue'
 import {reactive} from "vue"
 import { useRouter } from 'vue-router';
 const router = useRouter()
