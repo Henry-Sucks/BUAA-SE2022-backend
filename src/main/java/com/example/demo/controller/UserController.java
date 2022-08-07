@@ -18,7 +18,7 @@ public class UserController {
     //查询所有的user
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
-        int a = register("wanguangxi","123456789@qq.com", "11111" );
+        int a = userMapper.addUser(new User("123","123@qq.com","123"));
         System.out.println(a);
         List<User> userList = userMapper.queryUserList();
         for (User user : userList){
