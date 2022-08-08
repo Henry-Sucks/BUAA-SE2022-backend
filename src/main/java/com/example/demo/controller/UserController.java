@@ -54,12 +54,7 @@ public class UserController {
     }
 
     //邮箱登录
-<<<<<<< HEAD
-    @GetMapping("/login")
-    public int checkLoginByEmail(String userEmail, String passWord){
-=======
     public DataReturn<Integer> checkLoginByEmail(String userEmail, String passWord){
->>>>>>> WGX
         User temUser = userMapper.searchUserByEmail(userEmail);
         DataReturn<Integer> dataReturn = new DataReturn<Integer>();
         if (temUser == null){
@@ -84,23 +79,7 @@ public class UserController {
     }
 
     //通过Id查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
-<<<<<<< HEAD
-    //查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
-    public User getUserInfById(int userId){
-        return userMapper.searchUserById(userId);
-    }
 
-    //通过Email查找用户
-    @GetMapping("/findEmail")
-    public User getUserInfByEmail(String userEmail){
-        return userMapper.searchUserByEmail(userEmail);
-    }
-
-    //通过Name查找用户
-    @GetMapping("/findName")
-    public List<User> getUserInfByName(String userName){
-        return userMapper.searchUserByName(userName);
-=======
     public DataReturn<User> getUserInfById(int userId){
         DataReturn<User> dataReturn = new DataReturn<>();
         User temUser = userMapper.searchUserById(userId);
@@ -143,7 +122,6 @@ public class UserController {
             dataReturn.setResult(true);
         }
         return dataReturn;
->>>>>>> WGX
     }
 
     //更新用户信息
