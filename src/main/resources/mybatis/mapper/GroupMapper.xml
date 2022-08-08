@@ -12,6 +12,10 @@
         select * from usergroup where groupId = #{groupid}
     </select>
 
+    <select id="searchGroupByName" resultType="Group">
+        select * from usergroup where groupName = #{groupName}
+    </select>
+
     <insert id="addGroup" parameterType="Group">
         insert into usergroup (groupName, groupInf, groupIcon)
         values(#{groupName}, #{groupInf}, #{groupIcon})
