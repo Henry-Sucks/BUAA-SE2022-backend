@@ -4,6 +4,7 @@ import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.DataReturn;
 import com.example.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class UserController {
     }
 
     //用户名登录：检查登录 返回-1表示用户不存在，返回0表示密码错误，返回1表示密码正确
+    @GetMapping("/loginById")
     public DataReturn<Integer> checkLoginById(int userId, String passWord){
         DataReturn<Integer> dataReturn = new DataReturn<Integer>();
         User temUser = userMapper.searchUserById(userId);
@@ -52,6 +54,7 @@ public class UserController {
     }
 
     //邮箱登录
+    @GetMapping("/loginByEmail")
     public DataReturn<Integer> checkLoginByEmail(String userEmail, String passWord){
         User temUser = userMapper.searchUserByEmail(userEmail);
         DataReturn<Integer> dataReturn = new DataReturn<Integer>();
@@ -75,6 +78,7 @@ public class UserController {
     }
 
     //通过Id查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
+    @GetMapping("/findUserById")
     public DataReturn<User> getUserInfById(int userId){
         DataReturn<User> dataReturn = new DataReturn<>();
         User temUser = userMapper.searchUserById(userId);
@@ -90,6 +94,7 @@ public class UserController {
     }
 
     //通过Email查找用户
+    @GetMapping("/findUserByEmail")
     public DataReturn<User> getUserInfByEmail(String userEmail){
         User temUser =  userMapper.searchUserByEmail(userEmail);
         DataReturn dataReturn = new DataReturn<>();
@@ -105,6 +110,7 @@ public class UserController {
     }
 
     //通过Name查找用户
+    @GetMapping("/findUserByName")
     public DataReturn<List<User>> getUserInfByName(String userName){
         List<User> temUser =  userMapper.searchUserByName(userName);
         DataReturn dataReturn = new DataReturn<>();
@@ -120,6 +126,7 @@ public class UserController {
     }
 
     //更新用户信息
+    @PostMapping("/updateUser")
     public DataReturn<Integer> updateInf(int userId, String userName, String userEmail, int userPhoneNumber,
                 String userPassWord, String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
@@ -140,6 +147,7 @@ public class UserController {
     }
 
     //添加用户 返回用户的id
+    @PostMapping("/register")
     public DataReturn<Integer> register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
         DataReturn<Integer> dataReturn = new DataReturn<>();
