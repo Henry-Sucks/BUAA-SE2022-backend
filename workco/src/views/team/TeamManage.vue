@@ -4,7 +4,7 @@
         <el-row>
           <el-col :span="7">
           <el-button 
-            color="#1F80B0" class="input new-button" round
+            color="#1F80B0" class="input new-button" round @click="createTeam"
           >
             新建团队
           </el-button>
@@ -44,6 +44,13 @@
         </el-row>
       </el-footer>
     </el-container>
+
+    <!-- <el-dialog 
+        v-model="createState"
+        title="修改页面信息"
+    >
+    <team-config></team-config>
+    </el-dialog> -->
 </template>
 
 <script lang="ts" setup>

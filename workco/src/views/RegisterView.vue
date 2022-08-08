@@ -68,66 +68,7 @@ export default {
 
   methods: {
     // 发送数据
-    handleRegister(){
-        axios({
-          method: 'GET',
-            url: 'http://localhost:9090/user/findEmail',
-            params: {
-              userEmail: this.info.email,
-            }
-          }).then(response => {
-            let res = response.data
-            if(JSON.stringify(res) == "{}")
-            {
-              console.log("邮箱", res)
-              alert('已存在该用户!')
-            }   
-            else
-            {
-              axios({
-                method: 'GET',
-                url: 'http://localhost:9090/user/findName',
-                params: {
-                  userName: this.info.userName,
-                }
-              }).then(response => {
-                let res = response.data
-                if(JSON.stringify(res) == "{}")
-                {
-                  console.log("用户名", res)
-                  alert('已存在该用户!')
-                }
-                else
-                {
-                  if(this.info.password !== this.passwordAgain)
-                  {
-                    alert("两次密码输入不一致！")
-                    return
-                  }
-                  if(this.info.userName !== "" && this.info.email !== "" && this.info.passWord !== "")
-                  axios({
-                    method: 'POST',
-                    url: 'http://localhost:9090/user',
-                    params: {
-                      userName: this.info.userName,
-                      Email: this.info.email,
-                      passWord: this.info.password,
-                    }
-                  }).then(response => {
-                    console.log(response)
-                    this.$store.commit('loginOptions/setLoggedIn')
-                  })
-                  else
-                    alert("请填入完整信息!")
-                }          
-            })
-            }          
-        })
-
-
-
-        
-        },
+    
     
 
     // 文字动画

@@ -9,23 +9,23 @@
     >
 <el-sub-menu index="0">
     <template #title>
-        <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="teamManage" style="width: 30px;"></el-image>
+        <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="teamManagePic" style="width: 30px;"></el-image>
         <span>团队</span>
     </template>
-    <el-menu-item @click="teamSelected">
+    <el-menu-item @click="teamManage">
         管理团队
     </el-menu-item>
 </el-sub-menu>    
 <el-sub-menu index="1">
     <template #title>
-        <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="teamWork" style="width: 30px;"></el-image>
+        <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="teamWorkPic" style="width: 30px;"></el-image>
         <span>项目</span>
     </template>
+    <el-menu-item @click="projectManage">
+        管理项目
+    </el-menu-item>
 </el-sub-menu>    
-<el-menu-item></el-menu-item>
-<el-menu-item></el-menu-item>
-<el-menu-item></el-menu-item>
-<el-menu-item></el-menu-item>
+
 <el-menu-item></el-menu-item>
 <el-menu-item></el-menu-item>
 <el-menu-item></el-menu-item>
@@ -33,7 +33,7 @@
 <el-menu-item></el-menu-item>
 <el-sub-menu index="2">
     <template #title>
-        <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="user" style="width: 30px;"></el-image>
+        <el-image class="nav-icon" :class="{'collapsed' : collapsed}" :src="userPic" style="width: 30px;"></el-image>
         <span>账户</span>
     </template>
     <el-menu-item @click="userSelected">
@@ -48,16 +48,16 @@
 </template>
 
 <script>
-const teamManage = require('../assets/menu/teamManage.svg')
-const teamWork = require('../assets/menu/teamWork.svg')
-const user = require('../assets/menu/user.svg')
+const teamManagePic = require('../assets/menu/teamManage.svg')
+const teamWorkPic = require('../assets/menu/teamWork.svg')
+const userPic = require('../assets/menu/user.svg')
 export default {
     name: 'SideBar',
 
     data() {
         return {
             // 资源
-            teamManage, teamWork, user,
+            teamManagePic, teamWorkPic, userPic,
             collapsed: true
         }
     },
@@ -71,7 +71,7 @@ export default {
             if(this.collapsed)
                 this.collapsed = true
         },
-        teamSelected(){
+        teamManage(){
             this.$router.push({
           name:'TeamManage'
         })
@@ -83,6 +83,11 @@ export default {
             params:{
                 uid: 1
             }
+        })
+        },
+        projectManage(){
+            this.$router.push({
+          name:'ProjectManage',
         })
         },
     },

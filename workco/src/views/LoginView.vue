@@ -62,23 +62,23 @@ export default {
 
   methods: {
     // handleLogin(){
-    //     axios({
-    //         method: 'GET',
-    //         url: 'http://localhost:9090/user/login',
-    //         params: {
-    //           userEmail: this.info.email,
-    //           passWord: this.info.password
-    //         }
-    //       }).then(response => {
-    //         let res = response.data
-    //         console.log(res.data)
-    //         if(res === 1)
-    //           this.$store.commit('loginOptions/setLoggedIn')
-    //         else if(res === 0)
-    //           alert('密码输入错误')
-    //         else if(res === -1)
-    //           alert('不存在该用户')
-    //           })
+        // axios({
+        //     method: 'GET',
+        //     url: 'http://localhost:9090/user/login',
+        //     params: {
+        //       userEmail: this.info.email,
+        //       passWord: this.info.password
+        //     }
+        //   }).then(response => {
+        //     let res = response.data
+        //     console.log(res.data)
+        //     if(res === 1)
+        //       this.$store.commit('loginOptions/setLoggedIn')
+        //     else if(res === 0)
+        //       alert('密码输入错误')
+        //     else if(res === -1)
+        //       alert('不存在该用户')
+        //       })
         
     // },
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-page-header class="page-header" :content="teamInfo.name+ '的管理界面'" title="返回" @back="goBack"/>
+        <el-page-header class="page-header" :content="'团队管理界面:'+ teamInfo.name" title="返回" @back="goBack"/>
         <team-header teamName="你好"></team-header>
         <el-tabs
             type="card"
@@ -10,7 +10,7 @@
                 <member-table></member-table>
             </el-tab-pane>
             <el-tab-pane label="团队项目" name="second">
-                <project-manage></project-manage>
+                <project-manage :tid="teamInfo.tid"></project-manage>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -26,8 +26,8 @@ const router = useRouter()
 
 // 得到该组的完整信息：放在vuex上
 const teamInfo = reactive({
+    tid: 1,
     name: 'Dick',
-    avatar: '/static/teamDefault.png',
 
 })
 

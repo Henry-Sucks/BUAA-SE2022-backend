@@ -40,7 +40,7 @@ const teamOptions = {
 
     },
     state:{
-          // 记录当前查看组的所有信息
+          // 记录当前查看组的基本信息
           teamInfo: {
               tid: 1,
               userName: ''
@@ -49,6 +49,18 @@ const teamOptions = {
   
     }
   }
+
+const projectOptions ={
+    namespaced: true,
+    actions:{},
+    mutations:{},
+    state:{
+        // 记录当前查看项目的基本信息
+        projectInfo: {
+            pid: 1
+        }
+    }
+}
 
 export default createStore({
   modules:{

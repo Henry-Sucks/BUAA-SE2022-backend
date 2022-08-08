@@ -6,11 +6,15 @@ import com.example.demo.pojo.Group;
 import com.example.demo.pojo.User;
 import com.example.demo.pojo.UserToGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+//http://localhost:9090/user/createGroup
+@RequestMapping("/group")
 public class GroupController {
     @Autowired
     GroupMapper groupMapper;
@@ -27,6 +31,7 @@ public class GroupController {
     }
 
     //创建一个组
+    @PostMapping("/createGroup")
     public void createGroup(User founder, String name){
         Group temGroup = new Group(name);
         int groupId = groupMapper.addGroup(temGroup);

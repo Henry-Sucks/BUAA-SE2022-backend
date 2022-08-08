@@ -7,7 +7,11 @@ import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import TeamPage from '@/views/team/TeamPage.vue'
 import ProjectPage from '@/views/projects/ProjectPage.vue'
+import FileCenter from '@/views/files/FileCenter.vue'
+import ProjectFile from '@/views/projects/ProjectFile.vue'
+import FileEditor from '@/views/files/FileEditor.vue'
 
+import TestView from '@/views/TestView.vue'
 const routes = [
     {
         path: '/',
@@ -33,7 +37,7 @@ const routes = [
         component: HomePage,
         children:[
             {
-                path: 'team',
+                path: 'teamManage',
                 name: 'TeamManage',
                 component: TeamManage
             },
@@ -50,13 +54,37 @@ const routes = [
                 component: TeamPage
             },
 
+
             {
                 path: 'project/:pid',
                 name: 'ProjectPage',
-                component: ProjectPage
+                component: ProjectPage,
+                children: [
+                    {
+                        path: 'file',
+                        name: 'ProjectFile',
+                        component: ProjectFile
+                    },
+                    {
+                        path: 'file/:fid',
+                        name: 'FileEditor',
+                        component: FileEditor
+                    },
+                    // {
+                    //     path: 'design',
+                    //     name: 'ProjectDesign',
+                    //     component: ProjectDesign
+                    // }
+                ]
             },
 
         ]
+    },
+
+    {
+        path: '/test',
+        name: 'TestView',
+        component: TestView
     },
 
     

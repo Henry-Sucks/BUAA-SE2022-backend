@@ -29,11 +29,12 @@
 </template>
 
 <script lang="ts" setup>
-import {reactive, ref} from 'vue'
+import {reactive, ref, toRaw} from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
 const formSize = ref('large')
 const ruleFormRef = ref<FormInstance>()
+
 const ruleForm = reactive({
     email: '',
     userName: '',
@@ -55,12 +56,14 @@ const rules = reactive<FormRules>({
 })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
-    console.log('调用')
     if (!formEl) return
     await formEl.validate((valid, fields) => {
         if (valid) {
-          // 在这里把东西发出去
-        console.log('submit!')
+        console.log(ruleForm)
+          // 数据上传到数据库
+        
+          // 更新全局数据中的userInfo
+          // 利用router跳转到主页
         } else {
         console.log('error submit!', fields)
         }
