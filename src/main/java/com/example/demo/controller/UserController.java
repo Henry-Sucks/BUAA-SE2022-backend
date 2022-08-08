@@ -21,8 +21,6 @@ public class UserController {
     //查询所有的user
     @GetMapping
     public List<User> queryUserList(){
-        int a = userMapper.addUser(new User("123","123@qq.com","123"));
-        System.out.println(a);
         List<User> userList = userMapper.queryUserList();
         for (User user : userList){
             System.out.println(user);
@@ -31,6 +29,7 @@ public class UserController {
     }
 
     //用户名登录：检查登录 返回-1表示用户不存在，返回0表示密码错误，返回1表示密码正确
+    @GetMapping("checkPw")
     public DataReturn<Integer> checkLoginById(int userId, String passWord){
         DataReturn<Integer> dataReturn = new DataReturn<Integer>();
         User temUser = userMapper.searchUserById(userId);
@@ -54,6 +53,7 @@ public class UserController {
     }
 
     //邮箱登录
+    @GetMapping("/loginByEmail")
     public DataReturn<Integer> checkLoginByEmail(String userEmail, String passWord){
         User temUser = userMapper.searchUserByEmail(userEmail);
         DataReturn<Integer> dataReturn = new DataReturn<Integer>();
@@ -66,9 +66,11 @@ public class UserController {
         String psw = temUser.getUserPassWord();
         System.out.println(psw);
         System.out.println(passWord);
+        System.out.println(psw+ "  " + passWord);
         if (psw.equals(passWord)){
             dataReturn.setData(1);
             dataReturn.setResult(true);
+
             return dataReturn;
         }else{
             dataReturn.setData(0);
@@ -95,6 +97,7 @@ public class UserController {
     }
 
     //通过Email查找用户
+    @GetMapping("/findEmail")
     public DataReturn<User> getUserInfByEmail(String userEmail){
         User temUser =  userMapper.searchUserByEmail(userEmail);
         DataReturn dataReturn = new DataReturn<>();
@@ -109,6 +112,8 @@ public class UserController {
         return dataReturn;
     }
 
+
+    @GetMapping("/findName")
     //通过Name查找用户
     public DataReturn<List<User>> getUserInfByName(String userName){
         List<User> temUser =  userMapper.searchUserByName(userName);
@@ -145,6 +150,7 @@ public class UserController {
     }
 
     //添加用户 返回用户的id
+    @PostMapping("addUser")
     public DataReturn<Integer> register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
         DataReturn<Integer> dataReturn = new DataReturn<>();

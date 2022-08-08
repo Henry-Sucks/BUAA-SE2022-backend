@@ -53,11 +53,6 @@ public class GroupController {
         return  dataReturn;
     }
 
-<<<<<<< HEAD
-    //创建一个组
-    @PostMapping("/createGroup")
-    public void createGroup(User founder, String name){
-=======
     //通过名字查询组群
 
     public DataReturn<List<Group>> getGroupByName(String groupName){
@@ -115,7 +110,6 @@ public class GroupController {
 
     //创建一个组 返回组的id
     public DataReturn<Integer> createGroup(User founder, String name){
->>>>>>> WGX
         Group temGroup = new Group(name);
         DataReturn<Integer> dataReturn = new DataReturn<>();
         int groupId = temGroup.getGroupId();
