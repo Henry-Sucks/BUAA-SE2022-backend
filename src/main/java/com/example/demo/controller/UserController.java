@@ -48,11 +48,11 @@ public class UserController {
     public void updateInf(int userId, String userName, String userEmail, int userPhoneNumber,
                 String userPassWord, String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
-                String userLocation, String userUrl){
+                String userLocation, String userUrl, String createdTime){
         User temUser = new User(userId,userName,userEmail,userPhoneNumber,
                 userPassWord, userIcon, userRealName,
                 userCareer, userUnit, userBirthday,
-                userLocation, userUrl);
+                userLocation, userUrl, createdTime);
         userMapper.updateUser(temUser);
 
     }

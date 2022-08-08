@@ -11,4 +11,5 @@ public class Groups {
     private int userGroupsId;
     private String userGroupsName;
     private String  userGroupsIcon;
+    private String createdTime;
 }
