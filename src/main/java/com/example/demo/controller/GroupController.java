@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-//http://localhost:9090/user/createGroup
 @RequestMapping("/group")
+
 public class GroupController {
     @Autowired
     GroupMapper groupMapper;
@@ -24,6 +24,7 @@ public class GroupController {
 
     //查询所有组
     @GetMapping()
+
     public DataReturn<List<Group>> queryGroupList(){
         List<Group> groupList = groupMapper.queryGroupList();
         DataReturn<List<Group>> dataReturn = new DataReturn<List<Group>>();
@@ -40,6 +41,7 @@ public class GroupController {
 
     //通过id查询群组
     @GetMapping("/findId")
+
     public DataReturn<Group> getGroupById(int groupId){
         Group group = groupMapper.searchGroupById(groupId);
         DataReturn<Group> dataReturn = new DataReturn<>();
@@ -55,6 +57,7 @@ public class GroupController {
 
     //通过名字查询组群
     @GetMapping("/findName")
+
     public DataReturn<List<Group>> getGroupByName(String groupName){
         List<Group> groupList =  groupMapper.searchGroupByName(groupName);
         DataReturn<List<Group>> dataReturn = new DataReturn<>();
@@ -70,6 +73,7 @@ public class GroupController {
 
     //查找某用户加入的组 注意返回值可能为null
     @GetMapping("/findUser")
+
     public DataReturn<List<Group>> getGroupOfUserById(int userId){
         List<UserToGroup> temUserToGroup = userGroupMapper.searchGroupIdByUserId(userId);
         List<Group> groupList = new ArrayList<Group>();
@@ -91,6 +95,7 @@ public class GroupController {
 
     //查找某群里所有用户
     @GetMapping("/UserinGroup")
+
     public DataReturn<List<User>> getUserInGroupById(int groupId){
         List<UserToGroup> temUserToGroup = userGroupMapper.searchUserIdByGroupId(groupId);
         List<User> userList = new ArrayList<User>();

@@ -4,6 +4,7 @@ import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.DataReturn;
 import com.example.demo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -81,7 +82,7 @@ public class UserController {
     }
 
     //通过Id查找用户 返回User类，如果用户不存在返回null，用户信息可以由相应的get方法获得
-
+    @GetMapping("/findUserById")
     public DataReturn<User> getUserInfById(int userId){
         DataReturn<User> dataReturn = new DataReturn<>();
         User temUser = userMapper.searchUserById(userId);
