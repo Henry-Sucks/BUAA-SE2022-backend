@@ -130,11 +130,12 @@ public class UserController {
     }
 
     //更新用户信息
-    public DataReturn<Integer> updateInf(int userId, String userName, String userEmail, int userPhoneNumber,
+    @GetMapping("/update")
+    public DataReturn<Integer> updateInf(int userId, String userName, String userEmail,
                 String userPassWord, String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
                 String userLocation, String userUrl){
-        User temUser = new User(userId,userName,userEmail,userPhoneNumber,
+        User temUser = new User(userId,userName,userEmail,0,
                 userPassWord, userIcon, userRealName,
                 userCareer, userUnit, userBirthday,
                 userLocation, userUrl);

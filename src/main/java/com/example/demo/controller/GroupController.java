@@ -8,9 +8,7 @@ import com.example.demo.pojo.Group;
 import com.example.demo.pojo.User;
 import com.example.demo.pojo.UserToGroup;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +23,7 @@ public class GroupController {
     UserMapper userMapper;
 
     //查询所有组
+    @GetMapping()
     public DataReturn<List<Group>> queryGroupList(){
         List<Group> groupList = groupMapper.queryGroupList();
         DataReturn<List<Group>> dataReturn = new DataReturn<List<Group>>();
@@ -40,6 +39,7 @@ public class GroupController {
 
 
     //通过id查询群组
+    @GetMapping("/findId")
     public DataReturn<Group> getGroupById(int groupId){
         Group group = groupMapper.searchGroupById(groupId);
         DataReturn<Group> dataReturn = new DataReturn<>();
@@ -54,7 +54,7 @@ public class GroupController {
     }
 
     //通过名字查询组群
-
+    @GetMapping("/findName")
     public DataReturn<List<Group>> getGroupByName(String groupName){
         List<Group> groupList =  groupMapper.searchGroupByName(groupName);
         DataReturn<List<Group>> dataReturn = new DataReturn<>();
@@ -69,6 +69,7 @@ public class GroupController {
     }
 
     //查找某用户加入的组 注意返回值可能为null
+    @GetMapping("/findUser")
     public DataReturn<List<Group>> getGroupOfUserById(int userId){
         List<UserToGroup> temUserToGroup = userGroupMapper.searchGroupIdByUserId(userId);
         List<Group> groupList = new ArrayList<Group>();
@@ -89,6 +90,7 @@ public class GroupController {
     }
 
     //查找某群里所有用户
+    @GetMapping("/UserinGroup")
     public DataReturn<List<User>> getUserInGroupById(int groupId){
         List<UserToGroup> temUserToGroup = userGroupMapper.searchUserIdByGroupId(groupId);
         List<User> userList = new ArrayList<User>();
@@ -109,6 +111,7 @@ public class GroupController {
     }
 
     //创建一个组 返回组的id
+    @PostMapping("/createGroup")
     public DataReturn<Integer> createGroup(User founder, String name){
         Group temGroup = new Group(name);
         DataReturn<Integer> dataReturn = new DataReturn<>();
@@ -129,6 +132,7 @@ public class GroupController {
     }
 
     //向组内添加成员
+    @PostMapping("/addUser")
     public DataReturn<Integer>  addMember(int userId, int groupId, String job){
         UserToGroup temUserGroup = new UserToGroup(userId, groupId, job);
         int res = userGroupMapper.addUserToGroup(temUserGroup);
@@ -145,6 +149,7 @@ public class GroupController {
     }
 
     //删除组内成员
+    @DeleteMapping("/deleteUser")
     public DataReturn<Integer> deleteMember(int userId, int groupId, String job){
         UserToGroup temUserGroup = new UserToGroup(userId, groupId, job);
         int res = userGroupMapper.deleteUserToGroup(temUserGroup);
@@ -161,6 +166,7 @@ public class GroupController {
     }
 
     //更改成员身份
+    @PostMapping("changePos")
     public DataReturn<Integer>  updateMember(int userId, int groupId, String job){
         UserToGroup temUserGroup = new UserToGroup(userId, groupId, job);
         int res = userGroupMapper.updateUserToGroup(temUserGroup);
