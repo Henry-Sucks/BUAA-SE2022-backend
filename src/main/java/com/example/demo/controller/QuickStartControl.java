@@ -15,13 +15,14 @@ public class QuickStartControl {
 
     @Autowired
     UserGroupMapper userGroupMapper;
+
     @Autowired
     UserMapper userMapper;
 
     @RequestMapping("/quick")
     @ResponseBody
     public String quick(){
-        User user = userMapper.searchUserById(40);
-        return user.getUserName();
+        //new GroupController().createGroup(40,"test");
+        return "test";
     }
 }
