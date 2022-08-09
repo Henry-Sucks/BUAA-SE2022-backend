@@ -166,7 +166,7 @@ public class GroupController {
         if (res == 0){
             dataReturn.setResult(false);
             dataReturn.setData(0);
-            dataReturn.setErrorInf("添加失败");
+            dataReturn.setErrorInf("删除失败");
         }else{
             dataReturn.setData(1);
             dataReturn.setResult(true);
@@ -183,7 +183,7 @@ public class GroupController {
         if (res == 0){
             dataReturn.setResult(false);
             dataReturn.setData(0);
-            dataReturn.setErrorInf("添加失败");
+            dataReturn.setErrorInf("更新失败");
         }else{
             dataReturn.setData(1);
             dataReturn.setResult(true);
@@ -203,6 +203,22 @@ public class GroupController {
         }else{
             dataReturn.setData(job);
             dataReturn.setResult(true);
+        }
+        return dataReturn;
+    }
+
+    //删除一个组
+    @PostMapping("/deleteGroup")
+    public DataReturn<Integer> deleteGroup(int groupId){
+        DataReturn<Integer> dataReturn = new DataReturn<>();
+        int res1 = userGroupMapper.deleteGroup(groupId);
+        int res2 = groupMapper.deleteGroup(groupId);
+        if (res1 == 1 && res2 == 1){
+            dataReturn.setResult(true);
+            dataReturn.setData(1);
+        }else{
+            dataReturn.setResult(false);
+            dataReturn.setErrorInf("删除失败");
         }
         return dataReturn;
     }
