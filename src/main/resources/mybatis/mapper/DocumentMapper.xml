@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <select id="queryDocumentList" resultType="Document">
+        select * from document
+    </select>
+
+    <insert id="createDocument"  parameterType="Document" useGeneratedKeys="true" keyProperty="documentId">
+        insert into document(documentName, documentPath, projectId, createTime)
+        values (#{documentName}, #{documentPath}, #{projectId}, #{createTime})
+    </insert>
+
+    <delete id="deleteDocument" parameterType="int">
+        delete from document where documentId = #{documentId}
+    </delete>
+
+    <update id="updateDocument" parameterType="Document">
+        update document set documentName = #{documentName} where documentId = #{documentId}
+    </update>
+
+    <select id="searchDocumentById" resultType="Document">
+        select * from document where documentId = #{documentId}
+    </select>
+
+    <select id="searchProjectDocuments" resultType="Document">
+        select * from document where projectId = #{dodumentId}
+    </select>
+</mapper>
