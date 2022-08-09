@@ -185,4 +185,20 @@ public class GroupController {
         }
         return dataReturn;
     }
+
+    //查询成员身份
+    @GetMapping("/checkJob")
+    public DataReturn<String> checkMember(int userId, int groupId){
+        DataReturn<String> dataReturn = new DataReturn<>();
+        String job = userGroupMapper.searchUserJobById(userId, groupId);
+        if (job == null){
+            dataReturn.setResult(false);
+            dataReturn.setData(null);
+            dataReturn.setErrorInf("信息不存在");
+        }else{
+            dataReturn.setData(job);
+            dataReturn.setResult(true);
+        }
+        return dataReturn;
+    }
 }
