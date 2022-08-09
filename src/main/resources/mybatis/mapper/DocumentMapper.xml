@@ -9,8 +9,8 @@
     </select>
 
     <insert id="createDocument"  parameterType="Document" useGeneratedKeys="true" keyProperty="documentId">
-        insert into document(documentName, documentPath, projectId, createTime)
-        values (#{documentName}, #{documentPath}, #{projectId}, #{createTime})
+        insert into document(documentName, documentPath, userId, createTime)
+        values (#{documentName}, #{documentPath}, #{UserId}, #{createTime})
     </insert>
 
     <delete id="deleteDocument" parameterType="int">
