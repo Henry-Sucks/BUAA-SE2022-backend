@@ -26,7 +26,7 @@ public class GroupController {
     @Autowired
     UserMapper userMapper;
 
-    //查询所有组
+    //查询所有组: Nume
     @GetMapping("queryList")
     public DataReturn<List<Group>> queryGroupList(){
         List<Group> groupList = groupMapper.queryGroupList();
