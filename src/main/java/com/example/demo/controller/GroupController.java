@@ -117,11 +117,11 @@ public class GroupController {
 
     //创建一个组 返回组的id
     @PostMapping("/createGroup")
-    public DataReturn<Integer> createGroup(User founder, String name){
+    public DataReturn<Integer> createGroup(int userId, String name){
         Group temGroup = new Group(name);
         DataReturn<Integer> dataReturn = new DataReturn<>();
+        User founder = userMapper.searchUserById(userId);
         int groupId = temGroup.getGroupId();
-        int userId = founder.getUserId();
         temGroup.setGroupId(groupId);
         groupMapper.addGroup(temGroup);
         UserToGroup temUserGroup = new UserToGroup(userId, groupId,"founder");
