@@ -16,7 +16,7 @@
         select * from usergroup where groupName = #{groupName}
     </select>
 
-    <insert id="addGroup" parameterType="Group">
+    <insert id="addGroup" parameterType="Group" useGeneratedKeys="true" keyProperty="groupId">
         insert into usergroup (groupName, groupInf, groupIcon)
         values(#{groupName}, #{groupInf}, #{groupIcon})
     </insert>
