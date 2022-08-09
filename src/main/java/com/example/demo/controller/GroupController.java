@@ -122,7 +122,7 @@ public class GroupController {
         DataReturn<Integer> dataReturn = new DataReturn<>();
         User founder = userMapper.searchUserById(userId);
         groupMapper.addGroup(temGroup);
-        int groupId = temGroup.getGroupId(); b
+        int groupId = temGroup.getGroupId();
         UserToGroup temUserGroup = new UserToGroup(userId, groupId,"founder");
         int res = userGroupMapper.addUserToGroup(temUserGroup);
         if (res == 0){
