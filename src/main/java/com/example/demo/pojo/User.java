@@ -3,11 +3,12 @@ package com.example.demo.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class User {
+//@AllArgsConstructor
+public final class User {
     private int userId;
     private String userName;
     private String userEmail;
@@ -20,9 +21,17 @@ public class User {
     private String userBirthday;
     private String userLocation;
     private String userUrl;
-    private String createTime;
+    private String createdTime = null;
 
-    public User(String name, String Email, String passWord){
+    private void timeInit() {
+        if (createdTime == null) {
+            Date now = new Date();
+            createdTime = now.toString();
+        }
+    }
+
+    public User(String name, String Email, String passWord) {
+        timeInit();
         this.userName = name;
         this.userEmail = Email;
         this.userPassWord = passWord;
@@ -42,6 +51,7 @@ public class User {
         this.userBirthday = userBirthday;
         this.userLocation = userLocation;
         this.userUrl = userUrl;
+        timeInit();
     }
 }
 
