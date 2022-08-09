@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.mapper.UserGroupMapper;
+import com.example.demo.mapper.UserMapper;
+import com.example.demo.pojo.User;
 import com.example.demo.pojo.UserToGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +15,13 @@ public class QuickStartControl {
 
     @Autowired
     UserGroupMapper userGroupMapper;
+    @Autowired
+    UserMapper userMapper;
 
     @RequestMapping("/quick")
     @ResponseBody
     public String quick(){
-        userGroupMapper.addUserToGroup(new UserToGroup(40,1,"member"));
-        return "Welcome to InkBook";
+        User user = userMapper.searchUserById(40);
+        return user.getUserName();
     }
 }
