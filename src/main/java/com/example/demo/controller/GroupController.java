@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
@@ -119,6 +120,10 @@ public class GroupController {
     @PostMapping("/createGroup")
     public DataReturn<Integer> createGroup(int userId, String name){
         Group temGroup = new Group(name);
+        Calendar now = Calendar.getInstance();
+        String time = now.get(Calendar.YEAR) + "-" + now.get(Calendar.MONTH)
+                + "-" + now.get(Calendar.DAY_OF_MONTH);
+        temGroup.setCreateTime(time);
         DataReturn<Integer> dataReturn = new DataReturn<>();
         User founder = userMapper.searchUserById(userId);
         groupMapper.addGroup(temGroup);

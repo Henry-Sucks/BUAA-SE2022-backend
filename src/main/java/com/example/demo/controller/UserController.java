@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -133,11 +134,11 @@ public class UserController {
     //更新用户信息
     @GetMapping("/update")
     public DataReturn<Integer> updateInf(int userId, String userName, String userEmail,
-                String userPassWord, String userIcon, String userRealName,
+                String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
                 String userLocation, String userUrl){
-        User temUser = new User(userId,userName,userEmail,0,
-                userPassWord, userIcon, userRealName,
+        User temUser = new User(userId,userName,userEmail,
+                userIcon, userRealName,
                 userCareer, userUnit, userBirthday,
                 userLocation, userUrl);
         DataReturn<Integer> dataReturn = new DataReturn<>();
@@ -156,6 +157,10 @@ public class UserController {
     public DataReturn<Integer> register(String userName, String Email, String passWord){
         User temUser = new User(userName, Email, passWord);
         DataReturn<Integer> dataReturn = new DataReturn<>();
+        Calendar now = Calendar.getInstance();
+        String time = now.get(Calendar.YEAR) + "-" + now.get(Calendar.MONTH)
+                + "-" + now.get(Calendar.DAY_OF_MONTH);
+        temUser.setCreateTime(time);
         int res = userMapper.addUser(temUser);
         if (res == 0){
             dataReturn.setResult(false);
