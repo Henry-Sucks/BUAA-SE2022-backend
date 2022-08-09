@@ -20,7 +20,7 @@
 
     <select id="searchUserJobById" resultType="String">
         select userJob from usertogroup
-        where userId = #{arg0} and groupId = #{arg1}
+        where userId = #{userId} and groupId = #{groupId}
     </select>
 
     <insert id="addUserToGroup" parameterType="UserToGroup">
@@ -38,6 +38,10 @@
         set userJob = #{userJob}
         where userId = #{userId} and groupId = #{groupId}
     </update>
+
+    <delete id="deleteGroup" parameterType="int">
+        delete from usertogroup where groupId = #{groupId}
+    </delete>
 
 
 </mapper>

@@ -11,6 +11,7 @@ public class Document {
     private int documentId;
     private String documentName;
     private String documentPath;
-    private int projectId;
+    //private int projectId;
+    private int userId;
     private String createTime;
 }

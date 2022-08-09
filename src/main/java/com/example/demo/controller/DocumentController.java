@@ -20,12 +20,13 @@ public class DocumentController {
 
     //创建文档
     @PostMapping("/createDocument")
-    public DataReturn<Integer> createDocument(int projectId, String documentName, String documentPath){
+    public DataReturn<Integer> createDocument(int userId, String documentName, String documentPath){
         DataReturn<Integer> dataReturn = new DataReturn<>();
         Document document = new Document();
         document.setDocumentName(documentName);
         document.setDocumentPath(documentPath);
-        document.setProjectId(projectId);
+        //document.setProjectId(projectId);
+        document.setUserId(userId);
         Calendar now = Calendar.getInstance();
         String time = now.get(Calendar.YEAR) + "-" + now.get(Calendar.MONTH) +
                 "-" + now.get(Calendar.DAY_OF_MONTH);
