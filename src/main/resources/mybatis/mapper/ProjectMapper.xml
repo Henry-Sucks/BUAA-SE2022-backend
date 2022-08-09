@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProjectMapper">
+
+    <select id="queryProjectList" resultType="Project">
+        select * from projects
+    </select>
+
+    <select id="searchProjectById" resultType="Project">
+        select * from projects where projectId = #{projectId}
+    </select>
+
+    <select id="searchProjectByName" resultType="Project">
+        select * from projects where projectName = #{projectName}
+    </select>
+
+    <select id="searchProjectByGroup" resultType="Project">
+        select * from projects where groupId = #{groupId}
+    </select>
+
+    <insert id="addProject" parameterType="Project">
+        insert into projects (projectName, groupId)
+        values(#{projectName}, #{groupId})
+    </insert>
+
+
+    <delete id="deleteProject" parameterType="Project">
+        delete from projects where projectId = #{projectId}
+    </delete>
+</mapper>
