@@ -131,8 +131,8 @@ public class UserController {
     }
 
     //更新用户信息
-    @GetMapping("/update")
-    public DataReturn<Integer> updateInf(int userId, String userName, String userEmail,
+    @PostMapping("/update")
+    public DataReturn<Integer> updateInf(Integer userId, String userName, String userEmail,
                 String userPassWord, String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
                 String userLocation, String userUrl){

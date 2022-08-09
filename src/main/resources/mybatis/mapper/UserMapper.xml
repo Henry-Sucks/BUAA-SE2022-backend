@@ -29,7 +29,7 @@
                            userEmail = #{userEmail}, userPhoneNumber = #{userPhoneNumber},
                            userIcon = #{userIcon}, userRealName = #{userRealName},
                            userCareer = #{userCareer}, userUnit = #{userUnit},
-                           userBirthday = #{userBirthdat}, userlocation = #{userLocation},
+                           userBirthday = #{userBirthday}, userlocation = #{userLocation},
                            userUrl = #{userUrl}
         where userId = #{userId}
     </update>
