@@ -12,6 +12,7 @@ public class Group {
     private String groupName;
     private String groupInf;
     private String groupIcon;
+    private String createTime;
 
     public Group(String name){
         this.groupName = name;

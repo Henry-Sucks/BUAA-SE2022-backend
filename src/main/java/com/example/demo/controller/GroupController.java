@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
@@ -119,6 +120,10 @@ public class GroupController {
     @PostMapping("/createGroup")
     public DataReturn<Integer> createGroup(int userId, String name){
         Group temGroup = new Group(name);
+        Calendar now = Calendar.getInstance();
+        String time = now.get(Calendar.YEAR) + "-" + now.get(Calendar.MONTH)
+                + "-" + now.get(Calendar.DAY_OF_MONTH);
+        temGroup.setCreateTime(time);
         DataReturn<Integer> dataReturn = new DataReturn<>();
         User founder = userMapper.searchUserById(userId);
         groupMapper.addGroup(temGroup);
@@ -181,6 +186,22 @@ public class GroupController {
             dataReturn.setErrorInf("添加失败");
         }else{
             dataReturn.setData(1);
+            dataReturn.setResult(true);
+        }
+        return dataReturn;
+    }
+
+    //查询成员身份
+    @GetMapping("/checkJob")
+    public DataReturn<String> checkMember(int userId, int groupId){
+        DataReturn<String> dataReturn = new DataReturn<>();
+        String job = userGroupMapper.searchUserJobById(userId, groupId);
+        if (job == null){
+            dataReturn.setResult(false);
+            dataReturn.setData(null);
+            dataReturn.setErrorInf("信息不存在");
+        }else{
+            dataReturn.setData(job);
             dataReturn.setResult(true);
         }
         return dataReturn;

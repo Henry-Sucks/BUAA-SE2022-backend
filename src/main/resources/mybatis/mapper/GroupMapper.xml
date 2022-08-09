@@ -17,8 +17,8 @@
     </select>
 
     <insert id="addGroup" parameterType="Group" useGeneratedKeys="true" keyProperty="groupId">
-        insert into usergroup (groupName, groupInf, groupIcon)
-        values(#{groupName}, #{groupInf}, #{groupIcon})
+        insert into usergroup (groupName, groupInf, groupIcon, createTime)
+        values(#{groupName}, #{groupInf}, #{groupIcon}, #{createTime})
     </insert>
 
     <update id="updateGroup" parameterType="Group">

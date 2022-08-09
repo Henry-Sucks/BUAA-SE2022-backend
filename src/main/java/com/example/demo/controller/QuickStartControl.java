@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Calendar;
+
 @Controller
 public class QuickStartControl {
 
@@ -22,7 +24,9 @@ public class QuickStartControl {
     @RequestMapping("/quick")
     @ResponseBody
     public String quick(){
+        Calendar now = Calendar.getInstance();
+        String time = now.get(Calendar.YEAR) + "-" + now.get(Calendar.MONTH) + "-" + now.get(Calendar.DAY_OF_MONTH);
         //new GroupController().createGroup(40,"test");
-        return "test";
+        return time;
     }
 }
