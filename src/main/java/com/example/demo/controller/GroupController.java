@@ -19,7 +19,11 @@ import java.util.List;
 public class GroupController {
     @Autowired
     GroupMapper groupMapper;
+
+    @Autowired
     UserGroupMapper userGroupMapper;
+
+    @Autowired
     UserMapper userMapper;
 
     //查询所有组
