@@ -21,5 +21,7 @@ public interface UserGroupMapper {
 
     int deleteUserToGroup(UserToGroup userToGroup);
 
+    int deleteGroup(int groupId);
+
     int updateUserToGroup(UserToGroup userToGroup);
 }
