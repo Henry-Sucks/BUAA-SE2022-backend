@@ -175,7 +175,7 @@ public class GroupController {
     }
 
     //更改成员身份
-    @PostMapping("changePos")
+    @PostMapping("/changePos")
     public DataReturn<Integer>  updateMember(int userId, int groupId, String job){
         UserToGroup temUserGroup = new UserToGroup(userId, groupId, job);
         int res = userGroupMapper.updateUserToGroup(temUserGroup);

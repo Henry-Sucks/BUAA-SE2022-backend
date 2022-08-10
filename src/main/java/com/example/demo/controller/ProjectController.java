@@ -2,12 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.mapper.ProjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.pojo.Project;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/project")
 public class ProjectController {
 
     @Autowired
@@ -19,6 +23,7 @@ public class ProjectController {
     }
 
     // 通过id查询项目
+    @GetMapping("/findPid")
     public Project searchProjectById(int projectId){
         return projectMapper.searchProjectById(projectId);
     }
@@ -29,11 +34,13 @@ public class ProjectController {
     }
 
     // 通过团队Id查询项目
+    @GetMapping("/findGid")
     public Project searchProjectByGroup(int groupId){
         return projectMapper.searchProjectByGroup(groupId);
     }
 
     // 创建项目
+    @PostMapping("/addProject")
     public void addProject(String name, int groupId){
         Project temp = new Project(name, groupId);
         projectMapper.addProject(temp);
