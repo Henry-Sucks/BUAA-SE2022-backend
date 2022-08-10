@@ -21,28 +21,18 @@ public final class User {
     private String userBirthday;
     private String userLocation;
     private String userUrl;
-    private String createdTime = null;
-
-    private void timeInit(){
-        if(createdTime == null){
-            Date now = new Date();
-            createdTime = now.toString();
-        }
-    }
+    private String createTime;
 
     public User(String name, String Email, String passWord){
-        timeInit();
         this.userName = name;
         this.userEmail = Email;
         this.userPassWord = passWord;
     }
 
-
     public User(int userId, String userName, String userEmail,
                 String userIcon, String userRealName,
                 String userCareer, String userUnit, String userBirthday,
                 String userLocation, String userUrl) {
-        timeInit();
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
@@ -53,7 +43,6 @@ public final class User {
         this.userBirthday = userBirthday;
         this.userLocation = userLocation;
         this.userUrl = userUrl;
-
     }
 }
 
